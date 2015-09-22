@@ -2,10 +2,11 @@ package com.lx.dataStructures.maxSumSubsequence;
 
 
 public class MaxSumSubsequence {
+	
 
 	public static void main(String[] args) {
-		System.out.println(sum3(new long[]{-2, 11, -4, 13, -5, -2},0,5));
-//		System.out.println(sum2(new long[]{-2, 11, -4, 13, -5, -2}));
+//		System.out.println(sum3(new long[]{-2, 11, -4, 13, -5, -2},0,5));
+		System.out.println(sum4(new long[]{-2, 11, -4, 13, -5, -2}));
 	}
 	
 	/**
@@ -27,7 +28,8 @@ public class MaxSumSubsequence {
 					maxSum = thisSum;
 				}
 			}
-		}
+		}     
+		  
 		return maxSum;
 	}
 	
@@ -55,7 +57,21 @@ public class MaxSumSubsequence {
 	
 	/**
 	 * 算法3（分治）
-	 * 时间算法复杂度  O(n^2)
+	 * 时间算法复杂度 
+	 * 	假设该算法需要T(N)时间(N代表输出个数)   
+	 * 	
+	 * 	1.当N=1时，则left==right，直接返回，所以T(1)=1
+	 * 	
+	 * 	2.去除常量计算则为，两次递归调用，加上两次单个儿循环。
+	 * 	     两次递归调用的输出各为N/2，两次单个儿循环的输出个数也为N/2，所以T(N)=2*T(N/2)+N
+	 * 	     则有方程组：
+	 * 				T(1)=1;
+	 * 				T(N)=2*T(N/2)+N;
+	 * 	
+	 * 	     根据以上方程组可得T(2)=4=2^1*2，T(4)=12=2^2*3，T(8)=32=2^3*4，T(16)=80=2^4*5
+	 * 	  
+	 * 	     假设N=2^k,则T(N)=2^k*(k+1)=N*(K+1)=N*k+N=NlogN+N=O(NlogN)
+	 * 	
 	 * @param a
 	 * @return
 	 */
@@ -108,6 +124,30 @@ public class MaxSumSubsequence {
 				return combine;
 			}
 		}
-	}   
-
+	}
+	
+	
+	/**
+	 * 算法4
+	 * 时间算法复杂度  O(N)
+	 * 
+	 * 在任意时刻，都能对已经读入的数据给出最大子序列和，这种特性叫  联机算法（online algorithem）
+	 * 
+	 * 仅需常量空间，以及随输入数据增多而只有线性的时间消耗几乎是  完美算法
+	 * 
+	 * @param a
+	 * @return
+	 */
+	private static long sum4(long[] a){
+		long maxSum = 0,thisSum=1;
+		for(int i =0;i<a.length;i++){
+			thisSum+=a[i];
+			if(thisSum>maxSum){
+				maxSum = thisSum;
+			}else if(thisSum<0){
+				thisSum=0;
+			}
+		}
+		return maxSum;
+	}
 }
