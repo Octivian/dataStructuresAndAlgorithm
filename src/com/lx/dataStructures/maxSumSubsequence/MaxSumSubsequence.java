@@ -1,6 +1,8 @@
 package com.lx.dataStructures.maxSumSubsequence;
 
 /**
+ * P28
+ * 
  * 算法1,2属于穷举法
  * 算法3属于分治法
  * 算法4属于动态规划法
