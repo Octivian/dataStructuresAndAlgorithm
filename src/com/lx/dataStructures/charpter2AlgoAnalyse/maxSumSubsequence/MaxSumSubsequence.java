@@ -1,4 +1,4 @@
-package com.lx.dataStructures.charpter2MaxSumSubsequence;
+package com.lx.dataStructures.charpter2AlgoAnalyse.maxSumSubsequence;
 
 /**
  * P28
