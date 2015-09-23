@@ -1,4 +1,4 @@
-package com.lx.dataStructures.log;
+package com.lx.dataStructures.charpter2Log;
 
 
 /**
