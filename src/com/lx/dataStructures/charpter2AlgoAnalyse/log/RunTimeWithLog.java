@@ -59,6 +59,8 @@ public class RunTimeWithLog {
 	
 	/**
 	 * 欧几里得算法求最大公因数
+	 * 
+	 * 定理：gcd(a,b) = gcd(b,a mod b) (a>b 且a mod b 不为0)
 	 * 算法复杂度O(logN)
 	 * @param a
 	 * @param b
