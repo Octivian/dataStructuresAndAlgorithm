@@ -8,13 +8,14 @@ package com.lx.dataStructures.charpter2AlgoAnalyse.parctice;
  */
 public class OtherSumSubsequece17 {
 	public static void main(String[] args) {					// 12   -27   12
-		System.out.println(maxProductSubsequence2(new double[] { -2.5, 4, 0, 3, 0.5, 8, -1}));
+		System.out.println(maxProductSubsequence2(new double[] { -2.5, 4, 0, 3, 0.5, 8, -1,1.5,-2,-1}));
 		// System.out.println(minSumSubsequece3(new int[]{-2, 11, -20,-4, 13,
 		// -5, -2},0,6));
 	}
 
 	/**
-	 * 求最大子序列乘积 O(N^2)
+	 * 求最大子序列乘积
+	 *  O(N)
 	 * 
 	 * @param a
 	 * @return
@@ -32,20 +33,15 @@ public class OtherSumSubsequece17 {
 				if (maxv<0)
 					maxv = 0;
 			} else {
-				// double oriMint = mint;
-				// double oriMaxt = maxt;
 
 				double minrst = mint * v[i];
 				double maxrst = maxt * v[i];
 
-				maxt = maxrst > minrst ? maxrst : minrst;
-				mint = maxrst > minrst ? minrst : maxrst;
+				maxt = maxrst > minrst ? maxrst : minrst;//包含当前元素子序列的最大乘积
+				mint = maxrst > minrst ? minrst : maxrst;//包含当前元素子序列的最小乘积
 
 				if (maxt < v[i])
 					maxt = v[i];
-				if (mint > v[i])
-					mint = v[i];
-
 				if (maxv < maxt)
 					maxv = maxt;
 			}
@@ -75,6 +71,8 @@ public class OtherSumSubsequece17 {
 	}
 
 	/**
+	 * 
+	 * 最小子序列和
 	 * 动态规划(最小子序列和，此子序列首尾元素肯定小于0，整体也肯定小于0) O(N)
 	 * 
 	 * @param a
@@ -96,6 +94,7 @@ public class OtherSumSubsequece17 {
 	}
 
 	/**
+	 * 最小子序列和
 	 * 第一个循环：确定起点 第二个循环：确定终点 第三个循环：从起点到终点累加 O(N^3)
 	 * 
 	 * @param a
@@ -118,6 +117,8 @@ public class OtherSumSubsequece17 {
 	}
 
 	/**
+	 * 
+	 * 最小子序列和
 	 * 第一个循环：确定起点 第二个循环：确定终点同时累加判断 O(N^2)
 	 * 
 	 * @param a
@@ -138,6 +139,8 @@ public class OtherSumSubsequece17 {
 	}
 
 	/**
+	 * 最小子序列和
+	 * 分治 
 	 * O(NlogN)
 	 * 
 	 * @param a
