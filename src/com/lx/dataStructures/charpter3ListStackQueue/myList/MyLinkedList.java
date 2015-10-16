@@ -24,6 +24,9 @@ public class MyLinkedList {
 	}
 	
 	public void clear(){
+		//首尾node只做标识意义 ，
+		//所以linkedList.get(0) = beginMarker.next
+		//所以linkedList.get(size-1) = endMarker.prev
 		beginMarker = new Node<Object>(null, null, null);
 		endMarker = new Node<Object>(null, null, null);
 		beginMarker.next = endMarker;
