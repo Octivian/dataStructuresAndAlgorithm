@@ -6,7 +6,7 @@ public class StackExample {
 	public static void main(String[] args) {
 //		System.out
 //				.println(checkBracketsString("public static void main(String[] args) {}private static  boolean checkBracketsString(String s){char [] array = s.toCharArray();if(stack.isEmpty())}{()[()]}"));
-		System.out.println(infixToSuffix("a+b*c+(d*e+f)*g"));
+		System.out.println(infixToSuffix("a+b+c"));
 	}
 
 	/**
@@ -76,9 +76,9 @@ public class StackExample {
 							stack.push(top);
 							stack.push(c);
 						}else{
-							suffixString+=priorityChar;
+							suffixString+=top;
 							char top1 = stack.pop();
-							if(comparePriority(top1,c)!=top1){
+							if(comparePriority(top1,c)!=top1||top1 == '('){
 								stack.push(top1);
 								stack.push(c);
 							}else{
@@ -89,6 +89,9 @@ public class StackExample {
 					}
 				}  
 			}
+		}
+		while(!stack.isEmpty()){
+			suffixString+=stack.pop();
 		}
 		return suffixString;
 	}
