@@ -1,4 +1,4 @@
-package com.lx.dataStructures.charpter3ListStackQueue.myList;
+package com.lx.dataStructures.charpter3ListStackQueue.lsq;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
@@ -15,8 +15,8 @@ import java.util.NoSuchElementException;
 public class MyLinkedList {
 	private int size;
 	private int modCount;
-	private Node<Object> beginMarker;
-	private Node<Object> endMarker;
+	protected Node<Object> beginMarker;
+	protected Node<Object> endMarker;
 	
 	
 	public MyLinkedList() {
@@ -99,7 +99,7 @@ public class MyLinkedList {
 		modCount++;
 	}
 	
-	private static class Node<Object>{
+	public static class Node<Object>{
 		public Object data;
 		public Node<Object> prev;
 		public Node<Object> next;
