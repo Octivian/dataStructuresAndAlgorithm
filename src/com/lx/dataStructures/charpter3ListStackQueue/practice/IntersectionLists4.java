@@ -11,24 +11,24 @@ public class IntersectionLists4 {
 		List<Integer> b = new ArrayList<Integer>();
 		a.add(1);
 		a.add(3);
-		a.add(78);
-		a.add(123);
-		a.add(5555);
+		a.add(5);
+		a.add(7);
+		a.add(9);
 		b.add(2);
-		b.add(78);
-		b.add(110);
-		b.add(123);
-		b.add(1000);
-		b.add(5555);
-		b.add(100000);
+		b.add(4);
+		b.add(6);
+		b.add(8);
+		b.add(10);
+		b.add(11);
+		b.add(12);
 		List<Integer> intersecList = intersection(a,b);
 		for(Integer i:intersecList){
-			System.out.println(i);
+//			System.out.println(i);
 		}
 	}
 	
 	/**
-	 * 两个排好序的list找交集
+	 * 两个排好序的list找交集  O(2N)  O(N)
 	 * @param a
 	 * @param b
 	 * @return
@@ -39,7 +39,9 @@ public class IntersectionLists4 {
 		Iterator<Integer> itB = b.iterator();
 		int itemA = itA.next();
 		int itemB = itB.next();
+		int count = 0;
 		while(itemA!=0&&itemB!=0){
+			count++;
 			if(itemA==itemB){
 				intersecList.add(itemA);
 				itemA = itA.hasNext()?itA.next():0;
@@ -50,6 +52,7 @@ public class IntersectionLists4 {
 				itemA = itA.hasNext()?itA.next():0;
 			}
 		}
+		System.out.println(count);
 		return intersecList;
 	}
 	
