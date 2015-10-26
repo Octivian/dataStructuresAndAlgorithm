@@ -1,141 +1,88 @@
 package com.lx.dataStructures.charpter3ListStackQueue.practice;
 
-import java.util.Comparator;
-
 
 
 public class SinglyLinkedSortedList12<E> {
 	
+	
 	public static void main(String[] args) {
-		SinglyLinkedSortedList12<Integer> slist = new SinglyLinkedSortedList12<Integer>(new Comparator<Integer>() {
-			@Override
-			public int compare(Integer o1, Integer o2) {
-				return o1-o2;
-			}
-		});
+		SinglyLinkedSortedList12<Integer> slist = new SinglyLinkedSortedList12<Integer>();
+		slist.add(13);
+		slist.add(23);
+		slist.add(2333);
 		slist.add(1);
-		slist.add(1);
-		slist.add(2);
-		slist.add(1);
-		slist.add(1);
-		slist.remove(1);
+		slist.add(56);
 		System.out.println(slist.toString());
 	}
 	
-	private Comparator<E> comparator;
-	private int size;
-	private int modCount;
-	Node<E> beginMarker;
 	
-	public SinglyLinkedSortedList12(Comparator<E> comparator){
-		this.comparator = comparator;
-		size = 0;
-		modCount++;
-		beginMarker = new Node<E>(null,null);
+	private Node<Comparable> head;
+	private int theSize;
+
+	SinglyLinkedSortedList12() {
+		init();
 	}
-	
-	public int size(){
-		return size;
+
+	void init() {
+		theSize = 0;
+		head = new Node<Comparable>();
+		head.next = null;
 	}
-	
-	private static class Node<E>{
-		E item;
-        Node<E> next;
-        public Node(Node<E> next,E x) {
-        	item = x;
-        	this.next = next;
-		}
-	}
-	
-	public void add(E x){
-		if(size == 0){
-			Node<E> node = new Node<E>(null, x);
-			beginMarker.next = node;
-		}else{
-			int count = size;
-			int mid = count>>1;
-			while(mid!=0){
-				if(comparator.compare(getNode(mid).item, x)<0){
-					mid = mid>>1;
-				}else{
-					mid = mid+(mid>>1);
-				}
-			}
-		}
-		add(size,x);
-	}
-	
-	public void add(int idx,E x){
-		if(idx == 0){
-			addAfter(beginMarker,x);
-		}else{
-			addAfter(getNode(idx-1),x);
-		}
-	}
-	
-	public E get(int idx){
-		return getNode(idx).item;
-	}
-	
-	private  Node<E> getNode(int idx){
-		if(idx>size-1||idx<0){
-			throw new IndexOutOfBoundsException();
-		}
-		Node<E> n = beginMarker.next;
-		for(int i = 0;i<idx;i++){
-			n = n.next;	
-		}
-		return n;
-	}
-	
-	private void addAfter(Node<E> n,E x){
-		Node<E> node = new Node<E>(null,x);
-		n.next = node;
-		size++;
-		modCount++;
-	}
-	
-	public void remove(E e){
-		Node<E> node1 = beginMarker;
-		Node<E> node2 = beginMarker.next;
-		while(node2!=null){
-			if(e.equals(node2.item)){
-				node1.next = node2.next;
-			}
-			node1=node1.next;
-			node2=node2.next;
-		}
-	}
-	
-	public boolean addIfNotExist(E e){
-		
-		if(contain(e)){
+
+	boolean add(Comparable x) {
+		if (contains(x))
 			return false;
-		}else{
-			add(e);
-			return true;
-		}
-	}
-	
-	public boolean contain(E e){
-		Node<E> node = beginMarker.next;
-		while(node!=null){
-			if(e.equals(node.item)){
-				return true;
+		else {
+			Node<Comparable> p = head.next;
+			Node<Comparable> trailer = head;
+			while (p != null && p.data.compareTo(x) < 0) {
+				trailer = p;
+				p = p.next;
 			}
-			node=node.next;
+			trailer.next = new Node<Comparable>(x);
+			trailer.next.next = p;
+			theSize++;
+		}
+		return true;
+	}
+
+	boolean contains(Comparable x) {
+		Node<Comparable> p = head.next;
+		while (p != null && p.data.compareTo(x) <= 0) {
+			if (x.equals(p.data))
+				return true;
+			else
+				p = p.next;
 		}
 		return false;
 	}
+
+	private class Node<Comparable> {
+		Comparable data;
+		Node next;
+
+		Node() {
+			this(null, null);
+		}
+
+		Node(Comparable d) {
+			this(d, null);
+		}
+
+		Node(Comparable d, Node n) {
+			data = d;
+			next = n;
+		}
+	}
 	
 	public  String toString(){
-		Node<E> node = beginMarker.next;
+		Node<E> node = head.next;
 		StringBuffer sb = new StringBuffer();
 		while(node!=null){
 			if(node.next==null){
-				sb.append(node.item);
+				sb.append(node.data);
 			}else{
-				sb.append(node.item+",");
+				sb.append(node.data+",");
 			}
 			node = node.next;
 		}
