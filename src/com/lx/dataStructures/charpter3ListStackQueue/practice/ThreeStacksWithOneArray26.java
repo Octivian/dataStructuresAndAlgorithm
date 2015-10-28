@@ -28,7 +28,7 @@ public class ThreeStacksWithOneArray26 {
 	}
 
 	boolean isEmpty(int stackNum) {
-		return stackPointer[stackNum] == -1;
+		return stackPointer[stackNum] == -1;  
 	}
 
 	class StackNode {
