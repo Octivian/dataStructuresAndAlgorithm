@@ -1,6 +1,6 @@
 package com.lx.dataStructures.charpter3ListStackQueue.practice;
 
-import com.lx.dataStructures.charpter3ListStackQueue.lsq.MyLinkedList.Node;
+import com.lx.dataStructures.charpter3ListStackQueue.MyLinkedList.Node;
 
 public class SwitchInterfacingElement2 {
 

@@ -2,7 +2,7 @@ package com.lx.dataStructures.charpter3ListStackQueue.practice;
 
 import java.util.Iterator;
 
-import com.lx.dataStructures.charpter3ListStackQueue.lsq.MyArrayList;
+import com.lx.dataStructures.charpter3ListStackQueue.MyArrayList;
 
 public class MyArrayListWithAddAll9 extends MyArrayList{
 	

@@ -2,8 +2,7 @@ package com.lx.dataStructures.charpter3ListStackQueue.practice;
 
 import java.util.Iterator;
 
-import com.lx.dataStructures.charpter3ListStackQueue.lsq.MyArrayList;
-import com.lx.dataStructures.charpter3ListStackQueue.lsq.MyLinkedList;
+import com.lx.dataStructures.charpter3ListStackQueue.MyLinkedList;
 
 public class MyLinkedListWithremoveAll10 extends MyLinkedList{
 	

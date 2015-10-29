@@ -1,6 +1,6 @@
 package com.lx.dataStructures.charpter3ListStackQueue.practice;
 
-import com.lx.dataStructures.charpter3ListStackQueue.lsq.MyLinkedList;
+import com.lx.dataStructures.charpter3ListStackQueue.MyLinkedList;
 
 public class MyLinkedListWithContain3 extends MyLinkedList {
 	
