@@ -1,12 +1,19 @@
 package com.lx.dataStructures.charpter4Tree;
 
+
+/**
+ * 平衡二叉树的一种
+ * @author lx
+ *
+ * @param <E>
+ */
 public class AVLTree<E extends Comparable<E>> {
 
-	AVLNode<E> root;
+	public AVLNode<E> root;
 	
-	private  class AVLNode<E extends Comparable<E>>{
-		AVLNode<E> left;
-		AVLNode<E> right;
+	public  class AVLNode<E extends Comparable<E>>{
+		public AVLNode<E> left;
+		public AVLNode<E> right;
 		E e;
 		int height;
 		
