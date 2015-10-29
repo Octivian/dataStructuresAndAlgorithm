@@ -119,4 +119,22 @@ public class BinarySearchTree<E extends Comparable<E>> {
 			this.rightNode = right;
 		}
 	}
+	
+	public void printTree(){
+		printTree(root);
+	}
+	
+	
+	/**
+	 * 中序遍历打印
+	 * 左树，中间，右树顺序遍历
+	 * @param n
+	 */
+	private void printTree(Node<E> n){
+		if(n != null){
+			printTree(n.leftNode);
+			System.out.println(n.e);
+			printTree(n.rightNode);
+		}
+	}
 }
