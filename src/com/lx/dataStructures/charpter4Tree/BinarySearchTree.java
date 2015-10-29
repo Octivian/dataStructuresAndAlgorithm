@@ -137,4 +137,22 @@ public class BinarySearchTree<E extends Comparable<E>> {
 			printTree(n.rightNode);
 		}
 	}
+	
+	public int height(){
+		return height(root);
+	}
+	
+	/**
+	 * 后序遍历树高
+	 * 先处理两个子树
+	 * @param n
+	 * @return
+	 */
+	private int height(Node<E> n){
+		if(n == null){
+			return -1;
+		}else{
+			return 1+Math.max(height(n.leftNode),height(n.rightNode)); 
+		}
+	}
 }
