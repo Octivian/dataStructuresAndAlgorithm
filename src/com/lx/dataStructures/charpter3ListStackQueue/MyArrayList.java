@@ -1,4 +1,4 @@
-package com.lx.dataStructures.charpter3ListStackQueue.lsq;
+package com.lx.dataStructures.charpter3ListStackQueue;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
