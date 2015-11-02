@@ -117,7 +117,7 @@ public class MyTreeSet11<AnyType extends Comparable<? super AnyType>> {
 	}
 	
 	private Node<AnyType> findMin(Node<AnyType> n){
-		if ( n == null )
+		if ( n == null ) 
 			return null;
 		if(n.left == null){
 			return n;
