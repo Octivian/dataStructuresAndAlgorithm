@@ -50,7 +50,17 @@ public class SeparateChainHashTable<AnyType> {
 	}
 	
 	private void rehash(){
-		
+		List<AnyType> [] oldLists = lists;
+		lists = new List[nextPrime(lists.length<<1)];
+		for (int i = 0; i < lists.length; i++) {
+			lists[i] = new LinkedList<AnyType>();
+		}
+		currentSize = 0;
+		for (int i = 0; i < oldLists.length; i++) {
+			for (AnyType e:oldLists[i]) {
+				insert(e);
+			}
+		}
 	}
 	
 	private int myhash(AnyType e){
@@ -63,10 +73,21 @@ public class SeparateChainHashTable<AnyType> {
 	}
 	
 	private static int nextPrime(int n){
+		while(!isPrime(n))
+			n++;
 		return n;
 	}
 	
 	private static boolean isPrime(int n){
+		if(n%2==0){
+			return true;
+		}else{
+			for(long i = 3;i<Math.sqrt(n)+1;i=i+2){
+				if(n%i==0){
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 }
