@@ -15,10 +15,10 @@ public class PrimeNumber20 {
 	private static boolean isPrimeNumber1(long num){
 		for(long i = 2;i<num;i++){
 			if(num%i==0){
-				return true;
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 	
 	/**
@@ -29,15 +29,15 @@ public class PrimeNumber20 {
 	 */
 	private static boolean isPrimeNumber2(long num){
 		if(num%2==0){
-			return true;
+			return false;
 		}else{
 			for(long i = 3;i<Math.sqrt(num)+1;i=i+2){
 				if(num%i==0){
-					return true;
+					return false;
 				}
 			}
 		}
-		return false;
+		return true;
 	}
 	
 	/**
