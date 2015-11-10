@@ -76,10 +76,16 @@ public class BinaryHeap <AnyType extends Comparable<? super AnyType>>{
 				array[hole] = array[child];
 			else
 				break;
+			hole = child;
 		}
 		array[hole] = tmp;
 	}
-	
+	/**
+	 * N个insert完成，每个insert O(1)平均时间，O(logN)最坏时间
+	 * 
+	 * 总平均时间为O(N)
+	 * 
+	 */
 	private void buildheap(){
 		//从倒数第二层的最后一个元素开始下滤，构建二叉堆
 		for (int i = currentSize>>1; i >0; i--) {
