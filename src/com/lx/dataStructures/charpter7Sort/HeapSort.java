@@ -7,6 +7,13 @@ package com.lx.dataStructures.charpter7Sort;
  * @param <AnyType>
  */
 public class HeapSort<AnyType> {
+	
+	public static void main(String[] args) {
+		Integer[] a =  {81,94,11,96,12,35,17,95,28,58,41,75,15};
+		heapSort(a);
+		for(Integer n:a)
+			System.out.print(n+",");
+	}
 
 	/**
 	 * 填坑
@@ -22,7 +29,7 @@ public class HeapSort<AnyType> {
 			//下滤到左儿子
 			child = 2*i+1;
 			//左儿子的下标不是最后一个元素下标（证明有右儿子），并且右儿子大于左儿子，则当前元素跟较大儿子比较
-			if(child!=n-1&&a[child].compareTo(a[child+1])<0)
+			if(child+1<n&&a[child].compareTo(a[child+1])<0)
 				child++;
 			if(tmp.compareTo(a[child])<0)
 				a[i] = a[child];
@@ -45,7 +52,7 @@ public class HeapSort<AnyType> {
 	public static <AnyType extends Comparable<? super AnyType>>  void heapSort(AnyType[] a){
 		//build heap
 		//从倒数第二层最后一个元素逐个向前进行下滤比较替换大值向上,构成一个父节点为较大值的二叉堆
-		for (int i = a.length>>1; i > 0; i--) {
+		for (int i = a.length>>1; i >= 0; i--) {
 			percDown(a,i,a.length);
 		}
 		//deleteMax
