@@ -32,13 +32,7 @@ public class MergeSort15 {
 		int right = leftEnd+1;
 		
 		
-		/**
-		 * 
-		 */
 		int i = left;
-		/**
-		 * 
-		 */
 		
 		int num = rightEnd - left +1;
 		
